@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+      html {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="grassad.webp" />
+
+    <script>
+      const img = document.querySelector("img");
+      let x = 0,
+        y = 0;
+      let dx = 2,
+        dy = 2;
+
+      function move() {
+        const w = window.innerWidth - img.width;
+        const h = window.innerHeight - img.height;
+
+        x += dx;
+        y += dy;
+
+        if (x <= 0 || x >= w) dx *= -1;
+        if (y <= 0 || y >= h) dy *= -1;
+
+        img.style.left = x + "px";
+        img.style.top = y + "px";
+      }
+
+      img.style.position = "absolute";
+      img.onload = () => setInterval(move, 10);
+    </script>
+  </body>
+</html>
